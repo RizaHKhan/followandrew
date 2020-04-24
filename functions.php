@@ -1,13 +1,27 @@
 <?php
 
 // This adds dynamic title tag support
-function follow_andrew_theme_support () {
+function follow_andrew_theme_support()
+{
   add_theme_support('title-tag');
 }
 
+function register_menus()
+{
+  $locations = array(
+    'primary' => 'Desktop Primary Left Sidebar',
+    'footer' => 'Footer Menu Items'
+  );
+
+  register_nav_menus($locations);
+}
+
+add_action('init', 'register_menus');
+
 add_action('after_setup_theme', 'follow_andrew_theme_support');
 
-function register_styles() {
+function register_styles()
+{
   $version = wp_get_theme()->get('Version');
   wp_enqueue_style('followandrew-style', get_template_directory_uri() . "/style.css", array('followandrew-bootstrap'), $version, 'all');
   wp_enqueue_style('followandrew-bootstrap', "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css", array(), '4.4.1', 'all');
@@ -16,7 +30,8 @@ function register_styles() {
 
 add_action('wp_enqueue_scripts', 'register_styles');
 
-function register_scripts() {
+function register_scripts()
+{
   wp_enqueue_script('followandrew-bootstrap', 'https://code.jquery.com/jquery-3.4.1.slim.min.js', array(), '3.4.1', true);
   wp_enqueue_script('followandrew-popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', array(), '1.16.0', true);
   wp_enqueue_script('followandrew-bootstrap-js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', array(), '4.4.1', true);
