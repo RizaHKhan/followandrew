@@ -25,7 +25,7 @@
 			</button>
 
 			<div id="navigation" class="collapse navbar-collapse flex-column">
-				<img class="mb-3 mx-auto logo" src="images/logo.png" alt="logo">
+				<img class="mb-3 mx-auto logo" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="logo">
 
 				<?php wp_nav_menu(
 					array(
@@ -35,6 +35,7 @@
 						'items_wrap' => '<ul id="" class="navbar-nav flex-column text-sm-center text-md-left">%3$s</ul>'
 					)
 				); ?>
+
 
 				<hr>
 				<ul class="social-list list-inline py-3 mx-auto">
