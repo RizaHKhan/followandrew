@@ -1,5 +1,12 @@
 <?php
 
+// This adds dynamic title tag support
+function follow_andrew_theme_support () {
+  add_theme_support('title-tag');
+}
+
+add_action('after_setup_theme', 'follow_andrew_theme_support');
+
 function register_styles() {
   $version = wp_get_theme()->get('Version');
   wp_enqueue_style('followandrew-style', get_template_directory_uri() . "/style.css", array('followandrew-bootstrap'), $version, 'all');
